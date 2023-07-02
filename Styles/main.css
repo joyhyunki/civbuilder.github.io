@@ -10,7 +10,7 @@ h1 {
 }
 
 #topstrip {
-  width: 105%;
+  width: 100.65%;
   height: 30px;
   margin: 0px;
   border: 0px;
@@ -19,8 +19,24 @@ h1 {
   float: left;
   position: relative;
   right: 8px;
-  bottom: 10px;
+  bottom: 8px;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 26px;
 }
 
 #age {
+  width: 30%;
+  height: 25px;
+  border: 0px;
+  margin: 0px;
+  padding: 3px;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 26px;
 }
+
+#agetext {
+  position: relative;
+  left: 10px;
+  bottom: 3px;
+}
+
