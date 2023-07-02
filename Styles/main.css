@@ -10,14 +10,17 @@ h1 {
 }
 
 #topstrip {
-  width: 100%;
+  width: 105%;
   height: 30px;
   margin: 0px;
   border: 0px;
   padding: 3px;
   background-color: grey;
+  float: left;
+  position: relative;
+  right: 8px;
+  bottom: 10px;
 }
 
 #age {
 }
-
