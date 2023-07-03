@@ -6,7 +6,7 @@
 Progress
 
 CivBuilder Alpha
-v0.0.1 Added background and favicon /n
+v0.0.1 Added background and favicon <br>
 v0.0.2 Added age bar for tracking time
 v0.0.3 Added resource button for resource collection
 v0.0.4 Added logs and explanation
