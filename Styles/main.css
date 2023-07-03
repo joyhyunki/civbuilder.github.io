@@ -1,7 +1,13 @@
+html {
+  height: 100%;
+}
+
 body
 {
-  background-color: orange;
+  background-color: azure;
   font-family: 'Lato', Arial, sans-serif;
+  height: 100px;
+  overflow: hidden;
 }
 
 h1 {
@@ -10,7 +16,7 @@ h1 {
 }
 
 #topstrip {
-  width: 100.65%;
+  width: 100vw;
   height: 30px;
   margin: 0px;
   border: 0px;
@@ -40,3 +46,101 @@ h1 {
   bottom: 3px;
 }
 
+#resourcebar {
+  border: 0px;
+  margin: 0px;
+  padding: 3px;
+  width: 400px;
+  height: 94.8vh;
+  background-color: white;
+  position: relative;
+  top: 28px;
+  right: 10px;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 20px;
+  border: solid 2px lightgray;
+}
+
+#menu{
+  width: 80vw;
+  height: 4vh;
+  background-color: lightgray;
+  position: relative;
+  bottom: 92.6vh;
+  left: 399px;
+  margin: 0px;
+  border: 0px;
+  padding: 3px;
+}
+
+#resource{
+  width: 148.5vh;
+  height: 60vh;
+  background-color: white;
+  position: relative;
+  bottom: 92.6vh;
+  left: 399px;
+  margin: 0px;
+  border: 0px;
+  padding: 3px;
+  border: solid 2px lightgray;
+}
+
+.resource_button{
+  font-family: 'Urbanist', sans-serif;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+  width: 150px;
+  height: 35px;
+  border-color: lightgray;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+  position: relative;
+  left: 10px;
+  top: 10px;
+  margin: 8px;
+  transition-duration: 0.2s;
+}
+
+.resource_button:hover{
+  transition-duration: 0.2s;
+  border-color: black;
+}
+
+.resource_show{
+  position: relative;
+  left: 70px;
+  bottom: 60px;
+}
+
+#aminoimage{
+  width: 50px;
+  height: 50px;
+  position: relative;
+  left: 10px;
+}
+
+#explanation{
+  width: 37vw;
+  height: 30vh;
+  background-color: white;
+  position: relative;
+  bottom: 123.1vh;
+  left: 63vw;
+  border: 2px solid lightgray;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 18px;
+  text-align: center;
+}
+
+#chat{
+  width: 37vw;
+  height: 30vh;
+  background-color: white;
+  position: relative;
+  bottom: 92.7vh;
+  left: 26vw;
+  border: 2px solid lightgray;
+  overflow: scroll;
+}
