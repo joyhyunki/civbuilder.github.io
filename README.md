@@ -3,13 +3,13 @@
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Progress
+Progress<br><br>
 
-CivBuilder Alpha
+CivBuilder Alpha<br>
 v0.0.1 Added background and favicon <br>
-v0.0.2 Added age bar for tracking time
-v0.0.3 Added resource button for resource collection
-v0.0.4 Added logs and explanation
-v0.0.5 Added icons and resource counter
+v0.0.2 Added age bar for tracking time<br>
+v0.0.3 Added resource button for resource collection<br>
+v0.0.4 Added logs and explanation<br>
+v0.0.5 Added icons and resource counter<br><br>
 
 THIS GAME IS CURRENTLY IN ALPHA! IT'S STILL IN DEVELOPMENT! CONSTANTLY GETTING UPDATED!
