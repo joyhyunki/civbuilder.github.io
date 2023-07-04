@@ -147,11 +147,6 @@ h1 {
   bottom:50px;
 }
 
-#rnaimage{
-  position: relative;
-  left: 10px;
-  top: 300px;
-}
 /*Explanation window settings*/
 #explanation{
   width: 37vw;
@@ -183,6 +178,7 @@ h1 {
 #rnabutton{
   display: none;
 }
-  border: 2px solid lightgray;
-  overflow: scroll;
+
+#dnabutton{
+  display: none;
 }
