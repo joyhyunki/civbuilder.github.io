@@ -160,7 +160,3 @@ rnabutton.onmouseout = function(){
 
 //Event log testing
 eventlog.innerText = chatlog;
-HEllo
-HEllo
-HEllo
-HElloHElloHElloHEllo`
