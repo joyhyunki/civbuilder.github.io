@@ -1,7 +1,9 @@
+/* html height setting */
 html {
   height: 100%;
 }
 
+/* basic browser settings */
 body
 {
   background-color: azure;
@@ -15,6 +17,7 @@ h1 {
   text-align: center;
 }
 
+/*Age bar settings*/
 #topstrip {
   width: 100vw;
   height: 30px;
@@ -30,6 +33,7 @@ h1 {
   font-size: 26px;
 }
 
+/*Age text settings*/
 #age {
   width: 30%;
   height: 25px;
@@ -46,6 +50,7 @@ h1 {
   bottom: 3px;
 }
 
+/*resource bar settings*/
 #resourcebar {
   border: 0px;
   margin: 0px;
@@ -61,6 +66,7 @@ h1 {
   border: solid 2px lightgray;
 }
 
+/*menu settings. not made yet.*/
 #menu{
   width: 80vw;
   height: 4vh;
@@ -73,6 +79,7 @@ h1 {
   padding: 3px;
 }
 
+/*resource button place settings*/
 #resource{
   width: 148.5vh;
   height: 60vh;
@@ -86,6 +93,7 @@ h1 {
   border: solid 2px lightgray;
 }
 
+/*basic resource buttons settings*/
 .resource_button{
   font-family: 'Urbanist', sans-serif;
   font-size: 14px;
@@ -108,19 +116,43 @@ h1 {
   border-color: black;
 }
 
+/*resource_number settings*/
 .resource_show{
   position: relative;
   left: 70px;
   bottom: 60px;
 }
 
-#aminoimage{
+.resourceicon{
   width: 50px;
   height: 50px;
+}
+
+/*resource number settings*/
+/*for short, a mess*/
+#proteinshow{
+  position: relative;
+  bottom: 110px;
+}
+
+/*Aminoacid image settings*/
+#aminoimage{
   position: relative;
   left: 10px;
 }
 
+#proteinimage{
+  position: relative;
+  left: 10px;
+  bottom:50px;
+}
+
+#rnaimage{
+  position: relative;
+  left: 10px;
+  top: 300px;
+}
+/*Explanation window settings*/
 #explanation{
   width: 37vw;
   height: 30vh;
@@ -134,6 +166,7 @@ h1 {
   text-align: center;
 }
 
+/*event log settings*/
 #chat{
   width: 37vw;
   height: 30vh;
@@ -141,6 +174,15 @@ h1 {
   position: relative;
   bottom: 92.7vh;
   left: 26vw;
+  border: 2px solid lightgray;
+  font-family: 'Urbanist', sans-serif;
+  overflow: scroll;
+}
+
+/*hided things*/
+#rnabutton{
+  display: none;
+}
   border: 2px solid lightgray;
   overflow: scroll;
 }
