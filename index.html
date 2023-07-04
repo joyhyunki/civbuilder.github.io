@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <head>
   <title>CivBuilder</title>
+  <!-- favicon and style setting --> 
   <link rel="icon" href="Images/favicon.ico" type="image/x-icon"> 
   <link rel="stylesheet" href="Styles/main.css">
+  <!-- font settings -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500&display=swap" rel="stylesheet">
@@ -15,14 +17,22 @@
   </div>
   <div id = "resourcebar">
       <img id = "aminoimage" class = "resourceicon" src = "Images/aminoacid.png">
-      <p class = "resource_show">Amino Acid: <span id = "aminoacid">0</span></p>
+      <!-- resource numbers -->
+      <p class = "resource_show">Amino Acid: <span id = "aminoacid">0 / 100</span></p>
+      <img id = "proteinimage" class = "resourceicon" src = "Images/protein.png">
+      <!-- resource numbers -->
+      <p class = "resource_show" id = "proteinshow">Protein: <span id = "protein">0 / 100</span></p>
   </div>
   <div id = "menu"></div>
   <div id = "resource">
-      <button class = "resource_button" type = "button" id = "aminobutton">Collect Amino Acid</button>
-      <button class = "resource_button" type = "button" id = "proteinbutton">Create Protein</button>
+      <!-- resource buttons -->
+      <button class = "resource_button" type = "button" id = "aminobutton" tabindex = "-1" spaceindex = "-1">Collect Amino Acid</button>
+      <button class = "resource_button" type = "button" id = "proteinbutton" tabindex = "-1">Create Protein</button>
+      <button class = "resource_button" type = "button" id = "rnabutton" tabindex = "-1">Create RNA</button>
   </div>
   <div id = "chat"></div>
-  <div id = "explanation"><span id = "explainclick"></span></div>
+    <div id = "explanation">
+        <span id = "explainclick"></span>
+    </div>
   <script src = "JS/main.js"></script>
 </body>
