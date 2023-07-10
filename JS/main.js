@@ -9,24 +9,59 @@ var randomevent = 0;
 
 // Explain Variables
 var explainclick = document.getElementById("explainclick");
+var evolution = [0, 0, 0];
 
 // AminoAcid Variables
 var aminoacidnum = document.getElementById("aminoacid");
 var aminobutton = document.getElementById("aminobutton");
 var amino = [0, 0, 100];
-var aminoexplain = `
-Gather Amino Acids
-The primary source for making the fundamental blocks of life.
-------------------------------------------------------------
-Amino Acid produced per second: ` + amino[1] + `
-------------------------------------------------------------
-The starting amino acid was... uh... Methionine? UAG?`;
+
 
 // Protein Variables
 var proteinnum = document.getElementById("protein");
 var proteinbutton = document.getElementById("proteinbutton");
 var protein = [0, 0, 100];
-var proteinexplain = `
+
+// RNA Variables
+var rnabutton = document.getElementById("rnabutton");
+var rna = 0;
+var rnacost = 30;
+var rnaeffect = 50;
+
+// DNA Variables
+var dnabutton = document.getElementById("dnabutton");
+var dna = 0;
+var dnacost = 60;
+var dnaeffect = 1;
+
+// Mitochondria Variables
+var mitochondriabutton = document.getElementById("mitochondriabutton");
+var mitochondriacost = 50;
+
+// Ribosome Variables
+var ribosomebutton = document.getElementById("ribosomebutton");
+var ribosomecost = 500;
+
+// Ribosome Variables
+var animalbutton = document.getElementById("animalkingdom");
+var kingdomcost = [1000, 500];
+
+// Ribosome Variables
+var plantbutton = document.getElementById("plantkingdom");
+
+// Ribosome Variables
+var fungibutton = document.getElementById("fungikingdom");
+
+// Eventlog Variables
+var eventlog = document.getElementById("chat");
+
+var buttonexplain = [`
+Gather Amino Acids
+The primary source for making the fundamental blocks of life.
+------------------------------------------------------------
+Amino Acid produced per second: ` + amino[1] + `
+------------------------------------------------------------
+The starting amino acid was... uh... Methionine? UAG?`, `
 Create proteins with Amino Acids
 Proteins are the primary resource for life.
 Converts 3 aminoacids to 1 protein.
@@ -34,40 +69,50 @@ Converts 3 aminoacids to 1 protein.
 Protein produced per second: ` + protein[1] + `
 ------------------------------------------------------------
 Everybody's muscle food. Protein actually may consist of
-hundreds of amino acids, but that will make the game terrible.`;
-
-// RNA Variables
-var rnabutton = document.getElementById("rnabutton");
-var rna = 0;
-var rnacost = 30;
-var rnaeffect = 50;
-var rnaexplain = `
+hundreds of amino acids, but that will make the game terrible.`,`
 Create RNAs with Amino Acids
 Lot of proteins needs a plan to build. 
-Spend ` + rnacost + ` amino acids. Adds +50 amino acid storage.
+Spend ` + rnacost + ` amino acids. Adds +` + rnaeffect + ` amino acid storage. Adds + ` + rnaeffect / 5 + `
+protein storage.
 ------------------------------------------------------------
 RNAs: ` + rna + `
 ------------------------------------------------------------
-UAA UAG sounds really weird actually`;
-
-// DNA Variables
-var dnabutton = document.getElementById("dnabutton");
-var dna = 0;
-var dnacost = 60;
-var dnaeffect = 1;
-var dnaexplain = `
+UAA UAG sounds really weird actually`,`
 Create DNAs with Amino Acids
 DNA is the most delicate map of proteins built in history
-Spend ` + dnacost + ` Amino Acids. Automatically generates 
-1 amino acid per second.
+Spend ` + dnacost + ` Amino Acids. Automatically generates ` + 
+dnaeffect + ` amino acid per second.
 ------------------------------------------------------------
 DNAs: ` + dna + `
 ------------------------------------------------------------
-DNA will be the most magnificent thing you'll ever be making`;
-
-
-// Eventlog Variables
-var eventlog = document.getElementById("chat");
+DNA will be the most magnificent thing you'll ever be making`,`
+Boosts the effect of DNA
+Mitochondria generates cell's energy for them, while the cells give
+them a place to live.
+Spend ` + mitochondriacost + ` Proteins.
+------------------------------------------------------------
+It is fascinating that mitochondria was actually once bacterium.`,`
+Boosts the effect of RNA, and adds storage of protein + 500.
+Ribosome creates the protein by reading the RNA. Necessary for life.
+Spend ` + ribosomecost + ` Amino Acids.
+------------------------------------------------------------
+First Natural Born Translator`,`
+Make your organism evolve towards animal kingdom.
+Costs 1000 Amino Acids and 500 Proteins
+Makes protein storage to 1000. 
+------------------------------------------------------------
+Why make energy by ourselves? We can steal it from others.`,`
+Make your organism evolve towards plant kingdom.
+Costs 1000 Amino Acids and 500 Proteins
+Makes protein storage to 1000. 
+------------------------------------------------------------
+We may have killed animals at first by producing oxygen,
+but the animals got used to it!`,`
+Make your organism evolve towards fungi kingdom.
+Costs 1000 Amino Acids and 500 Proteins
+Makes protein storage to 1000. 
+------------------------------------------------------------
+Only thing we need is a living thing to decompose.`]
 
 setInterval(function(){
     amino[0] += amino[1];
@@ -92,6 +137,7 @@ setInterval(function(){
     
     aminoacidnum.innerText = amino[0] + " / " + amino[2];
     proteinnum.innerText = protein[0] + " / " + protein[2];
+    checkColor();
 }, 1000);
 
 // Arbitrary numbert generator
@@ -113,6 +159,18 @@ function checkColor(){
   };
   if (amino[0] >= dnacost){
       document.getElementById("dnabutton").style.backgroundColor = "white";
+  };
+  if (protein[0] < mitochondriacost){
+      document.getElementById("mitochondriabutton").style.backgroundColor = "gray";
+  };
+  if (protein[0] >= mitochondriacost){
+      document.getElementById("mitochondriabutton").style.backgroundColor = "white";
+  };
+  if (amino[0] >= ribosomecost){
+      document.getElementById("ribosomebutton").style.backgroundColor = "white";
+  };
+  if (amino[0] < ribosomecost){
+      document.getElementById("ribosomebutton").style.backgroundColor = "gray";
   };
 };
 
@@ -150,7 +208,7 @@ aminobutton.onclick = function(){
             else{ 
               amino[0] += randomevent;
             }
-            chat(`An asteroid crahsed on earth. You earn ` + randomevent + ` Amino Acids.`);
+            chat(`An asteroid crashed on earth. You earn ` + randomevent + ` Amino Acids.`);
         };
     };
     if (990 <= randomevent){
@@ -165,7 +223,7 @@ aminobutton.onclick = function(){
 
 // Resource info handling
 aminobutton.onmouseover = function(){
-    explainclick.innerText = aminoexplain;
+    explainclick.innerText = buttonexplain[0];
 };
 
 aminobutton.onmouseout = function(){
@@ -183,7 +241,7 @@ proteinbutton.onclick = function(){
     checkColor();
     aminoacidnum.innerText = amino[0] + " / " + amino[2]
     proteinnum.innerText = protein[0] + " / " + protein[2];
-    if (protein[0] >= 20){
+    if (protein[0] >= 5){
       document.getElementById("rnabutton").style.display = "inline";
       document.getElementById("dnabutton").style.display = "inline";
     }
@@ -191,7 +249,7 @@ proteinbutton.onclick = function(){
 
 // Resource info handling
 proteinbutton.onmouseover = function(){
-    explainclick.innerText = proteinexplain;
+    explainclick.innerText = buttonexplain[1];
 };
 
 proteinbutton.onmouseout = function(){
@@ -204,24 +262,27 @@ rnabutton.onclick = function(){
         amino[0] -= rnacost;
         rna += 1
         amino[2] += rnaeffect;
+        protein[2] += rnaeffect / 5;
         rnacost = Math.round(rnacost * 1.2);
     }
     checkColor();
     aminoacidnum.innerText = amino[0] + " / " + amino[2]
-    rnaexplain = `
+    proteinnum.innerText = protein[0] + " / " + protein[2]
+    buttonexplain[2] = `
 Create RNAs with Amino Acids
 Lot of proteins needs a plan to build. 
-Spend ` + rnacost + ` amino acids. Adds +50 amino acid storage.
+Spend ` + rnacost + ` amino acids. Adds +` + rnaeffect + ` amino acid storage. Adds + ` + rnaeffect / 5 + `
+protein storage.
 ------------------------------------------------------------
 RNAs: ` + rna + `
 ------------------------------------------------------------
 UAA UAG sounds really weird actually`;
-    explainclick.innerText = rnaexplain;
+    explainclick.innerText = buttonexplain[2];
 }; 
 
 // Resource info handling
 rnabutton.onmouseover = function(){
-    explainclick.innerText = rnaexplain;
+    explainclick.innerText = buttonexplain[2];
 };
 
 rnabutton.onmouseout = function(){
@@ -236,34 +297,179 @@ dnabutton.onclick = function(){
         amino[1] += dnaeffect;
         dnacost = Math.round(dnacost * 1.2);
     }
+    if (dna == 1){
+      mitochondriabutton.style.display = "inline";
+      ribosomebutton.style.display = "inline";
+      checkColor();
+    }
     checkColor();
     aminoacidnum.innerText = amino[0] + " / " + amino[2];
-    aminoexplain = `
+    buttonexplain[0] = `
 Gather Amino Acids
 The primary source for making the fundamental blocks of life.
 ------------------------------------------------------------
 Amino Acid produced per second: ` + amino[1] + `
 ------------------------------------------------------------
 The starting amino acid was... uh... Methionine? UAG?`;
-    dnaexplain = `
+    buttonexplain[3] = `
 Create DNAs with Amino Acids
 DNA is the most delicate map of proteins built in history
-Spend ` + dnacost + ` Amino Acids. Automatically generates 1 Amino Acid per second.
+Spend ` + dnacost + ` Amino Acids. Automatically generates ` + 
+dnaeffect + `amino acid per second.
 ------------------------------------------------------------
 DNAs: ` + dna + `
 ------------------------------------------------------------
 DNA will be the most magnificent thing you'll ever be making`;
-    explainclick.innerText = dnaexplain;
+    explainclick.innerText = buttonexplain[3];
 }; 
 
 // Resource info handling
 dnabutton.onmouseover = function(){
-    explainclick.innerText = dnaexplain;
+    explainclick.innerText = buttonexplain[3];
 };
 
 dnabutton.onmouseout = function(){
     explainclick.innerText = "";
 };
 
-//Event log testing
-eventlog.innerText = chatlog;
+
+// Mitochondria button handling`
+mitochondriabutton.onclick = function(){
+    if (protein[0] >= mitochondriacost){
+        protein[0] -= mitochondriacost;
+        amino[1] *= 2;
+        dnaeffect = 2;
+        proteinnum.innerText = protein[0] + " / " + protein[2];
+        document.getElementById("mitochondriabutton").style.display = "none";
+    }
+    buttonexplain[0] = `
+Gather Amino Acids
+The primary source for making the fundamental blocks of life.
+------------------------------------------------------------
+Amino Acid produced per second: ` + amino[1] + `
+------------------------------------------------------------
+The starting amino acid was... uh... Methionine? UAG?`;
+    buttonexplain[3] = `
+Create DNAs with Amino Acids
+DNA is the most delicate map of proteins built in history
+Spend ` + dnacost + ` Amino Acids. Automatically generates ` + 
+dnaeffect + ` amino acid per second.
+------------------------------------------------------------
+DNAs: ` + dna + `
+------------------------------------------------------------
+DNA will be the most magnificent thing you'll ever be making`; 
+}; 
+
+// Resource info handling
+mitochondriabutton.onmouseover = function(){
+    explainclick.innerText = buttonexplain[4];
+};
+
+mitochondriabutton.onmouseout = function(){
+    explainclick.innerText = "";
+};
+
+// Mitochondria button handling`
+ribosomebutton.onclick = function(){
+    if (amino[0] >= ribosomecost){
+        amino[0] -= ribosomecost;
+        amino[2] += (amino[2] - 100);
+        protein[2] += 500;
+        aminoacidnum.innerText = amino[0] + " / " + amino[2];
+        proteinnum.innerText = protein[0] + " / " + protein[2];
+        document.getElementById("ribosomebutton").style.display = "none";
+        document.getElementById("animalkingdom").style.display = "inline";
+        document.getElementById("plantkingdom").style.display = "inline";
+        document.getElementById("fungikingdom").style.display = "inline";
+    }
+}; 
+
+// Resource info handling
+ribosomebutton.onmouseover = function(){
+    explainclick.innerText = ribosomeexplain;
+};
+
+ribosomebutton.onmouseout = function(){
+    explainclick.innerText = "";
+};
+
+// Animal button handling`
+animalbutton.onclick = function(){
+    if (amino[0] >= kingdomcost[0]){
+        if (protein[0] >= kingdomcost[1]){
+            amino[0] -= kingdomcost[0];
+            protein[2] = 1000;
+            protein[0] -= kingdomcost[1];
+            document.getElementById("animalkingdom").style.display = "none";
+            document.getElementById("plantkingdom").style.display = "none";
+            document.getElementById("fungikingdom").style.display = "none";
+            evolution[0] = 0
+            aminoacidnum.innerText = amino[0] + " / " + amino[2];
+            proteinnum.innerText = protein[0] + " / " + protein[2];
+            console.log(evolution[0]);
+        }
+    }
+}; 
+
+// Resource info handling
+animalbutton.onmouseover = function(){
+    explainclick.innerText = buttonexplain[6];
+};
+
+animalbutton.onmouseout = function(){
+    explainclick.innerText = "";
+};
+
+// Plant button handling`
+plantbutton.onclick = function(){
+    if (amino[0] >= kingdomcost[0]){
+        if (protein[0] >= kingdomcost[1]){
+            amino[0] -= kingdomcost[0];
+            protein[2] = 1000;
+            protein[0] -= kingdomcost[1];
+            document.getElementById("animalkingdom").style.display = "none";
+            document.getElementById("plantkingdom").style.display = "none";
+            document.getElementById("fungikingdom").style.display = "none";
+            evolution[0] = 1
+            aminoacidnum.innerText = amino[0] + " / " + amino[2];
+            proteinnum.innerText = protein[0] + " / " + protein[2];
+            console.log(evolution[0]);
+        }
+    }
+}; 
+
+// Resource info handling
+plantbutton.onmouseover = function(){
+    explainclick.innerText = buttonexplain[7];
+};
+
+plantbutton.onmouseout = function(){
+    explainclick.innerText = "";
+};
+
+// Fungi button handling`
+fungibutton.onclick = function(){
+    if (amino[0] >= kingdomcost[0]){
+        if (protein[0] >= kingdomcost[1]){
+            amino[0] -= kingdomcost[0];
+            protein[2] = 1000;
+            protein[0] -= kingdomcost[1];
+            document.getElementById("animalkingdom").style.display = "none";
+            document.getElementById("plantkingdom").style.display = "none";
+            document.getElementById("fungikingdom").style.display = "none";
+            evolution[0] = 2
+            aminoacidnum.innerText = amino[0] + " / " + amino[2];
+            proteinnum.innerText = protein[0] + " / " + protein[2];
+            console.log(evolution[0]);
+        }
+    }
+}; 
+
+// Resource info handling
+fungibutton.onmouseover = function(){
+    explainclick.innerText = buttonexplain[8];
+};
+
+fungibutton.onmouseout = function(){
+    explainclick.innerText = "";
+};
