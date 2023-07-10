@@ -375,6 +375,7 @@ ribosomebutton.onclick = function(){
         amino[0] -= ribosomecost;
         amino[2] += (amino[2] - 100);
         protein[2] += 500;
+        rnaeffect *= 2;
         aminoacidnum.innerText = amino[0] + " / " + amino[2];
         proteinnum.innerText = protein[0] + " / " + protein[2];
         document.getElementById("ribosomebutton").style.display = "none";
