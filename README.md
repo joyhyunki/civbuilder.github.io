@@ -3,9 +3,9 @@
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Progress<br><br>
+Progress<br>
 
-CivBuilder Alpha<br>
+**CivBuilder Alpha<br>**
 v0.0.1 Added background and favicon <br>
 v0.0.2 Added age bar for tracking time<br>
 v0.0.3 Added resource button for resource collection<br>
@@ -15,7 +15,7 @@ v0.1.0 Added affording price, auto resource incoming, and managed probability of
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-CivBuilder Beta<br>
+**CivBuilder Beta<br>**
 v0.0.1 Completely changed UI. Suitable with different browser sizes, finally! Polished designs and icons. Cleaner event logs. <br><br>
 
 THIS GAME IS CURRENTLY IN ALPHA! IT'S STILL IN DEVELOPMENT! CONSTANTLY GETTING UPDATED!
