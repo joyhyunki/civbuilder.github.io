@@ -1,208 +1,64 @@
-/* html height setting */
-html {
-  height: 100%;
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Urbanist', Arial, sans-serif;
 }
-
-/* basic browser settings */
-body
-{
-  background-color: azure;
-  font-family: 'Lato', Arial, sans-serif;
-  height: 100px;
-  overflow: hidden;
+body {
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    grid-template-rows: auto 1fr auto;
+    background-color: #f0f8ff;
 }
-
-h1 {
-  color: white;
-  text-align: center;
+header {
+    grid-column: 1 / -1;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
 }
-
-/*Age bar settings*/
-#topstrip {
-  width: 100vw;
-  height: 30px;
-  margin: 0px;
-  border: 0px;
-  padding: 3px;
-  background-color: grey;
-  float: left;
-  position: relative;
-  right: 8px;
-  bottom: 8px;
-  font-family: 'Urbanist', sans-serif;
-  font-size: 26px;
-}
-
-/*Age text settings*/
-#age {
-  width: 30%;
-  height: 25px;
-  border: 0px;
-  margin: 0px;
-  padding: 3px;
-  font-family: 'Urbanist', sans-serif;
-  font-size: 26px;
-}
-
-#agetext {
-  position: relative;
-  left: 10px;
-  bottom: 3px;
-}
-
-/*resource bar settings*/
 #resourcebar {
-  border: 0px;
-  margin: 0px;
-  padding: 3px;
-  width: 400px;
-  height: 94.8vh;
-  background-color: white;
-  position: relative;
-  top: 28px;
-  right: 10px;
-  font-family: 'Urbanist', sans-serif;
-  font-size: 20px;
-  border: solid 2px lightgray;
+    grid-row: 2 / -1;
+    background-color: white;
+    border-right: 2px solid #ddd;
+    padding: 10px;
+    overflow-y: auto;
 }
-
-/*menu settings. not made yet.*/
-#menu{
-  width: 80vw;
-  height: 4vh;
-  background-color: lightgray;
-  position: relative;
-  bottom: 92.6vh;
-  left: 399px;
-  margin: 0px;
-  border: 0px;
-  padding: 3px;
+main {
+    padding: 20px;
+    overflow-y: auto;
 }
-
-/*resource button place settings*/
-#resource{
-  width: 148.5vh;
-  height: 60vh;
-  background-color: white;
-  position: relative;
-  bottom: 92.6vh;
-  left: 399px;
-  margin: 0px;
-  border: 0px;
-  padding: 3px;
-  border: solid 2px lightgray;
+#chat {
+    grid-column: 3;
+    grid-row: 2 / -1;
+    background-color: white;
+    border-left: 2px solid #ddd;
+    padding: 10px;
+    overflow-y: auto;
 }
-
-/*basic resource buttons settings*/
-.resource_button{
-  font-family: 'Urbanist', sans-serif;
-  font-size: 14px;
-  background-color: white;
-  cursor: pointer;
-  width: 150px;
-  height: 35px;
-  border-color: lightgray;
-  border: 2px solid lightgray;
-  border-radius: 5px;
-  position: relative;
-  left: 10px;
-  top: 10px;
-  margin: 8px;
-  transition-duration: 0.2s;
+.resource {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
-
-.resource_button:hover{
-  transition-duration: 0.2s;
-  border-color: black;
+.resource img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
 }
-
-/*resource_number settings*/
-.resource_show{
-  position: relative;
-  left: 70px;
-  bottom: 60px;
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
 }
-
-.resourceicon{
-  width: 50px;
-  height: 50px;
-}
-
-/*resource number settings*/
-/*for short, a mess*/
-#proteinshow{
-  position: relative;
-  bottom: 110px;
-}
-
-/*Aminoacid image settings*/
-#aminoimage{
-  position: relative;
-  left: 10px;
-}
-
-#proteinimage{
-  position: relative;
-  left: 10px;
-  bottom:50px;
-}
-
-/*Explanation window settings*/
-#explanation{
-  width: 37vw;
-  height: 30vh;
-  background-color: white;
-  position: relative;
-  bottom: 123.1vh;
-  left: 63vw;
-  border: 2px solid lightgray;
-  font-family: 'Urbanist', sans-serif;
-  font-size: 18px;
-  text-align: center;
-}
-
-/*event log settings*/
-#chat{
-  width: 37vw;
-  height: 30vh;
-  background-color: white;
-  position: relative;
-  bottom: 92.7vh;
-  left: 26vw;
-  border: 2px solid lightgray;
-  font-family: 'Urbanist', sans-serif;
-  overflow: scroll;
-}
-
-/*hided things*/
-#rnabutton{
-  display: none;
-}
-
-#dnabutton{
-  display: none;
-}
-
-#mitochondriabutton{
-  display: none;
-}
-
-#ribosomebutton{
-  display: none;
-}
-
-#animalkingdom{
-  display: none;
-}
-
-#plantkingdom{
-  display: none;
-}
-
-#fungikingdom{
-  display: none;
-}
-
-#dnabutton{
-  display: none;
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
 }
