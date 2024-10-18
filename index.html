@@ -1,45 +1,25 @@
+<!-- Damn, the code got much cleaner.
+Should've done this already... -->
+
 <!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>CivBuilder</title>
-  <!-- favicon and style setting --> 
-  <link rel="icon" href="Images/favicon.ico" type="image/x-icon"> 
-  <link rel="stylesheet" href="Styles/main.css">
-  <!-- font settings -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CivBuilder</title>
+    <link rel="icon" href="Images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="Styles/main.css">
 </head>
 <body>
-  <div id = "topstrip">
-    <div id = "age">
-      <span id = "agetext">Prehistoric</span>
-    </div>
-  </div>
-  <div id = "resourcebar">
-      <img id = "aminoimage" class = "resourceicon" src = "Images/aminoacid.png">
-      <!-- resource numbers -->
-      <p class = "resource_show">Amino Acid: <span id = "aminoacid">0 / 100</span></p>
-      <img id = "proteinimage" class = "resourceicon" src = "Images/protein.png">
-      <!-- resource numbers -->
-      <p class = "resource_show" id = "proteinshow">Protein: <span id = "protein">0 / 100</span></p>
-  </div>
-  <div id = "menu"></div>
-  <div id = "resource">
-      <!-- resource buttons -->
-      <button class = "resource_button" type = "button" id = "aminobutton" tabindex = "-1" spaceindex = "-1">Collect Amino Acid</button>
-      <button class = "resource_button" type = "button" id = "proteinbutton" tabindex = "-1">Create Protein</button>
-      <button class = "resource_button" type = "button" id = "rnabutton" tabindex = "-1">Create RNA</button>
-      <button class = "resource_button" type = "button" id = "dnabutton" tabindex = "-1">Create DNA</button>
-      <button class = "resource_button" type = "button" id = "mitochondriabutton" tabindex = "-1">Involve Mitochondria</button>
-      <button class = "resource_button" type = "button" id = "ribosomebutton" tabindex = "-1">Involve Ribosome</button>
-      <br>
-      <button class = "resource_button" type = "button" id = "animalkingdom" tabindex = "-1">Animal Kingdom</button>
-      <button class = "resource_button" type = "button" id = "plantkingdom" tabindex = "-1">Plant Kingdom</button>
-      <button class = "resource_button" type = "button" id = "fungikingdom" tabindex = "-1">Fungi Kingdom</button>
-  </div>
-  <div id = "chat"></div>
-    <div id = "explanation">
-        <span id = "explainclick"></span>
-    </div>
-  <script src = "JS/main.js"></script>
+    <header>
+        <h1>CivBuilder - <span id="age">Prehistoric</span></h1>
+    </header>
+    <nav id="resourcebar"></nav>
+    <main id="actions">
+        <h2>Actions</h2>
+        <div id="buttons"></div>
+    </main>
+    <aside id="chat"></aside>
+    <script src = "JS/main.js"></script>
 </body>
+</html>
