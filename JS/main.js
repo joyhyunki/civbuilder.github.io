@@ -6,6 +6,8 @@ const resources = {
     protein: { name: "Protein", count: 0, limit: 100, rate: 0, icon: "Images/protein.png" },
     rna: { name: "RNA", count: 0, limit: 50, rate: 0, icon: "Images/rna.png" },
     dna: { name: "DNA", count: 0, limit: 25, rate: 0, icon: "Images/dna.png" },
+    alpha: {name: "Alpha", count: 0, limit: 100, rate: 0, icon: ""},
+    beta: {name: "Beta", count: 0, limit: 100, rate: 0, icon: ""},
 };
 
 // types of actions
@@ -14,6 +16,8 @@ const actions = [
     { id: "createProtein", name: "Create Protein", cost: { aminoAcid: 3 }, produces: { protein: 1 }, unlocked: true },
     { id: "createRNA", name: "Create RNA", cost: { protein: 5 }, produces: { rna: 1 }, unlocked: false },
     { id: "createDNA", name: "Create DNA", cost: { rna: 2 }, produces: { dna: 1 }, unlocked: false },
+    { id: "createAlpha", name: "Create Alpha", cost: {}, produces: {alpha: 1}, unlocked: true },
+    { id: "createBeta", name: "Create Beta", cost: {}, produces: {beta: 1}, unlocked: true },
 ];
 
 // ages
