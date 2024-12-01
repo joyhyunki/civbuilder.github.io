@@ -19,3 +19,13 @@ v0.1.0 Added affording price, auto resource incoming, and managed probability of
 v0.0.1 Completely changed UI. Suitable with different browser sizes, finally! Polished designs and icons. Cleaner event logs. <br><br>
 
 THIS GAME IS CURRENTLY IN ALPHA! IT'S STILL IN DEVELOPMENT! CONSTANTLY GETTING UPDATED!
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**ROADMAP**
+1. Species Selection
+2. Technology Menu
+3. Incremental Styled Game
+4. MultiPlayer
+
+Man, I really do need a roadmap program...
