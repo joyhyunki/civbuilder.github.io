@@ -106,6 +106,22 @@ function updateUI() {
     updateButtons();
 }
 
+if (currentAge === 1) {
+    var userciv = prompt("Type your trees (animal / plants / fungi)");
+    if (userciv === "animal") {
+        console.log("animal")
+    }
+    if (userciv === "plants") {
+        console.log("plants")
+    }
+    if (userciv === "fungi") {
+        console.log("fungi")
+    }
+    else {
+        console.log("error")
+    }
+}
+
 function gameLoop() {
     for (const resource of Object.values(resources)) {
         resource.count = Math.min(resource.count + resource.rate, resource.limit);
