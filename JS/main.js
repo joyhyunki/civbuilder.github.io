@@ -1,5 +1,5 @@
 // I love this new way of organizing, really
-
+var userciv;
 // types of resources
 const resources = {
     aminoAcid: { name: "Amino Acid", count: 0, limit: 100, rate: 0, icon: "Images/aminoacid.png", age: 0, visible: true }, // Amino Acid starts visible
@@ -201,7 +201,18 @@ function checkUnlocks() {
         logEvent(`Advanced to ${ages[currentAge]} Age!`);
 
         // Species
-        window.alert("CHOOSE");
+        var userciv = prompt("Type your trees (animal / plants / fungi)");
+        if (userciv === "animal") {
+            logEvent("animal");
+        }   else if (userciv === "plants") {
+            logEvent("plants");
+        }   else if (userciv === "fungi") {
+            logEvent("fungi");
+        }   else {
+            logEvent("error");
+        }
+    } 
+
     }
 }
 
