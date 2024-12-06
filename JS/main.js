@@ -1,5 +1,7 @@
 // I love this new way of organizing, really
 var userciv;
+let hasAdvanced = false; // New flag to track age advancement
+
 // types of resources
 const resources = {
     aminoAcid: { name: "Amino Acid", count: 0, limit: 100, rate: 0, icon: "Images/aminoacid.png", age: 0, visible: true }, // Amino Acid starts visible
@@ -186,33 +188,29 @@ function checkUnlocks() {
     if (resources.protein.count >= 10 && !actions.find(a => a.id === "createRibosome").unlocked) {
         actions.find(a => a.id === "createRibosome").unlocked = true;
         logEvent("Unlocked: Create Ribosome");
-        // Make Ribosome visible when unlocked
         resources.ribosome.visible = true;
     }
     if (resources.ribosome.count >= 5 && !actions.find(a => a.id === "createDNA").unlocked) {
         actions.find(a => a.id === "createDNA").unlocked = true;
         logEvent("Unlocked: Create DNA");
-        // Make DNA visible when unlocked
         resources.dna.visible = true;
     }
-    if (resources.dna.count >= 10 && currentAge === 0) {
+    if (resources.dna.count >= 10 && currentAge === 0 && !hasAdvanced) { // Check if already advanced
+        hasAdvanced = true; // Set flag to true
         currentAge++;
         document.getElementById("age").textContent = ages[currentAge];
         logEvent(`Advanced to ${ages[currentAge]} Age!`);
 
-        // Species
         userciv = prompt("Type your trees (animal / plants / fungi)");
         if (userciv === "animal") {
             logEvent("animal");
-        }   else if (userciv === "plants") {
+        } else if (userciv === "plants") {
             logEvent("plants");
-        }   else if (userciv === "fungi") {
+        } else if (userciv === "fungi") {
             logEvent("fungi");
-        }   else {
+        } else {
             logEvent("error");
         }
-    } 
-
     }
 }
 
