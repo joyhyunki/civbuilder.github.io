@@ -4,9 +4,9 @@ let hasAdvanced = false; // New flag to track age advancement
 
 // types of resources
 const resources = {
-    aminoAcid: { name: "Amino Acid", count: 0, limit: 100, rate: 0, icon: "Images/aminoacid.png", age: 0, visible: true }, // Amino Acid starts visible
+    aminoAcid: { name: "Amino Acid", count: 0, limit: 100, rate: 0, icon: "Images/aminoacid.png", age: 0, visible: true },
     protein: { name: "Protein", count: 0, limit: 100, rate: 0, icon: "Images/protein.png", age: 0, visible: false },
-    ribosome: { name: "Ribosome", count: 0, productionRate: 1, age: 0, visible: false }, // Modified ribosome to include productionRate
+    ribosome: { name: "Ribosome", count: 0, productionRate: 1, age: 0, visible: false },
     dna: { name: "DNA", count: 0, limit: 25, rate: 0, icon: "Images/dna.png", age: 0, visible: false },
 };
 
@@ -14,7 +14,7 @@ const resources = {
 const actions = [
     { id: "collectAmino", name: "Collect Amino Acid", cost: {}, produces: { aminoAcid: 1 }, unlocked: true, age: 0 },
     { id: "createProtein", name: "Create Protein", cost: { aminoAcid: 3 }, produces: { protein: 1 }, unlocked: true, age: 0 },
-    { id: "createRibosome", name: "Create Ribosome", cost: { protein: 5 }, produces: { ribosome: 1 }, unlocked: false, age: 0, isBuilding: true }, // Added isBuilding flag
+    { id: "createRibosome", name: "Create Ribosome", cost: { protein: 5 }, produces: { ribosome: 1 }, unlocked: false, age: 0, isBuilding: true },
     { id: "createDNA", name: "Create DNA", cost: { ribosome: 2 }, produces: { dna: 1 }, unlocked: false, age: 0 },
 ];
 
@@ -47,7 +47,6 @@ function updateResources() {
     resourceBar.innerHTML = "";
 
     for (const [key, resource] of Object.entries(resources)) {
-        // Skip displaying ribosome in resource bar
         if (key === 'ribosome') continue;
 
         if (resource.visible && currentAge === resource.age) {
@@ -58,7 +57,6 @@ function updateResources() {
                 <span>${resource.name}: ${resource.count} / ${resource.limit}</span>
             `;
 
-            // Add tooltip for resources
             const tooltipContent = `
                 <strong>${resource.name}</strong><br>
                 Current: ${resource.count}<br>
@@ -89,7 +87,6 @@ function updateButtons() {
             const button = document.createElement("button");
             button.textContent = action.name;
 
-            // Add ribosome count for the ribosome button
             if (action.id === 'createRibosome') {
                 const countSpan = document.createElement('span');
                 countSpan.className = 'building-count';
@@ -105,10 +102,8 @@ function updateButtons() {
             button.onclick = () => performAction(action);
             button.disabled = !canPerformAction(action);
 
-            // Create tooltip content for buttons
             let tooltipContent = `<strong>${action.name}</strong><br>`;
 
-            // Add costs
             if (Object.keys(action.cost).length > 0) {
                 tooltipContent += "Costs:<br>";
                 for (const [resource, amount] of Object.entries(action.cost)) {
@@ -116,18 +111,15 @@ function updateButtons() {
                 }
             }
 
-            // Add production
             tooltipContent += "Produces:<br>";
             for (const [resource, amount] of Object.entries(action.produces)) {
                 tooltipContent += `+ ${amount} ${resources[resource].name}<br>`;
             }
 
-            // Add special tooltip info for ribosome
             if (action.id === 'createRibosome') {
                 tooltipContent += `<br>Each Ribosome produces:<br>+ ${resources.ribosome.productionRate} Protein/s`;
             }
 
-            // Add hover events for tooltip
             button.onmouseover = (e) => showTooltip(e, tooltipContent);
             button.onmouseout = hideTooltip;
             button.onmousemove = (e) => {
@@ -137,7 +129,6 @@ function updateButtons() {
 
             buttonsDiv.appendChild(button);
 
-            // Make produced resources visible when their action is unlocked
             for (const resource in action.produces) {
                 resources[resource].visible = true;
             }
@@ -176,7 +167,6 @@ function performAction(action) {
         } else {
             resources[resource].count += amount;
         }
-        // Make the produced resource visible
         resources[resource].visible = true;
     }
     checkUnlocks();
@@ -195,8 +185,8 @@ function checkUnlocks() {
         logEvent("Unlocked: Create DNA");
         resources.dna.visible = true;
     }
-    if (resources.dna.count >= 10 && currentAge === 0 && !hasAdvanced) { // Check if already advanced
-        hasAdvanced = true; // Set flag to true
+    if (resources.dna.count >= 10 && currentAge === 0 && !hasAdvanced) {
+        hasAdvanced = true;
         currentAge++;
         document.getElementById("age").textContent = ages[currentAge];
         logEvent(`Advanced to ${ages[currentAge]} Age!`);
@@ -231,14 +221,12 @@ function updateUI() {
 
 // Game loop
 function gameLoop() {
-    // Add protein production from ribosomes
     const proteinProduction = resources.ribosome.count * resources.ribosome.productionRate;
     resources.protein.count = Math.min(
         resources.protein.count + proteinProduction,
         resources.protein.limit
     );
 
-    // Update other resources
     for (const resource of Object.values(resources)) {
         if (resource.limit && resource.rate) {
             resource.count = Math.min(resource.count + resource.rate, resource.limit);
