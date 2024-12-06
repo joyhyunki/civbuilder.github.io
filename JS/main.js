@@ -201,7 +201,7 @@ function checkUnlocks() {
         logEvent(`Advanced to ${ages[currentAge]} Age!`);
 
         // Species
-        var userciv = prompt("Type your trees (animal / plants / fungi)");
+        userciv = prompt("Type your trees (animal / plants / fungi)");
         if (userciv === "animal") {
             logEvent("animal");
         }   else if (userciv === "plants") {
