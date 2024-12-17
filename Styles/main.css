@@ -62,3 +62,47 @@ button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
 }
+
+/* New Tooltip Styles */
+.tooltip {
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'Urbanist', Arial, sans-serif;
+    z-index: 1000;
+    pointer-events: none;
+    max-width: 250px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    line-height: 1.5;
+    border: 1px solid #444;
+}
+
+.tooltip strong {
+    color: #4CAF50;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.resource:hover, 
+button:not(:disabled):hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+}
+
+/* Tooltip content styling */
+.tooltip br {
+    content: '';
+    margin: 8px 0;
+    display: block;
+}
+
+/* Cost and production items in tooltip */
+.tooltip br + span {
+    padding-left: 10px;
+    display: inline-block;
+}
