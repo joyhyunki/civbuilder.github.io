@@ -158,13 +158,13 @@ function checkUnlocks() {
     if (resources.protein.count >= 10 && !actions.find(a => a.id === "createRibosome").unlocked) {
         unlockAction("createRibosome");
         logEvent("Unlocked: Create Ribosome");
-        setResourceVisibility('ribosome', true);
+        unlockTech("Ribosome");
     }
     
     if (resources.ribosome.count >= 5 && !actions.find(a => a.id === "createDNA").unlocked) {
         unlockAction("createDNA");
         logEvent("Unlocked: Create DNA");
-        setResourceVisibility('dna', true);
+        unlockTech("dna")
     }
     
     if (resources.dna.count >= 10 && currentAge === 0 && !hasAdvanced) {
@@ -178,8 +178,8 @@ function checkUnlocks() {
         setUserCiv(civ);
         if (civ === "animal") {
             logEvent("You choose animal civilization!");
-            unlockTech(monad);
-            unlockAction(createMonad);
+            unlockTech("monad");
+            unlockAction("createMonad");
             doescivchoose = true;
             break;
         } else if (civ === "plants") {
