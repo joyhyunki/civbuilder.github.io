@@ -58,3 +58,10 @@ export function unlockAction(actionId) {
         action.unlocked = true;
     }
 }
+
+//testing part
+export function unlockTech(resourceName) {
+    const resources = resources.find(a=> a.id === resourceName)
+    resources.resorces.visible = true
+}
+

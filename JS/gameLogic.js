@@ -1,7 +1,7 @@
 import { 
     resources, actions, ages, currentAge, hasAdvanced,
     setUserCiv, setHasAdvanced, setCurrentAge,
-    updateResourceCount, setResourceVisibility, unlockAction
+    updateResourceCount, setResourceVisibility, unlockAction, unlockTech
 } from './gameData.js';
 
 // Create tooltip element
@@ -178,9 +178,8 @@ function checkUnlocks() {
         setUserCiv(civ);
         if (civ === "animal") {
             logEvent("You choose animal civilization!");
-            resources.monad.visible = true;
-            var createMonad = actions.find(action => action.id === "createMonad");
-            createMonad.unlocked = true;
+            unlockTech(monad);
+            unlockAction(createMonad);
             doescivchoose = true;
             break;
         } else if (civ === "plants") {
