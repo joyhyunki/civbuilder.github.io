@@ -24,36 +24,40 @@ function hideTooltip() {
 
 // UI Update functions
 function updateResources() {
-    const resourceBar = document.getElementById("resourcebar");
-    resourceBar.innerHTML = "";
+    const resourcesTop = document.getElementById("resources-top");
+    const resourcesBottom = document.getElementById("resources-bottom");
+    resourcesTop.innerHTML = "";
+    resourcesBottom.innerHTML = "";
 
     for (const [key, resource] of Object.entries(resources)) {
-        if (key === 'ribosome') continue;
+        if (!resource.visible || currentAge !== resource.age) continue;
 
-        if (resource.visible && currentAge === resource.age) {
-            const div = document.createElement("div");
-            div.className = "resource";
-            div.innerHTML = `
-                <img src="${resource.icon}" alt="${resource.name}">
-                <span>${resource.name}: ${resource.count} / ${resource.limit}</span>
-            `;
+        const div = document.createElement("div");
+        div.className = "resource";
+        div.innerHTML = `
+            <img src="${resource.icon}" alt="${resource.name}">
+            <span>${resource.name}: ${resource.count} / ${resource.limit}</span>
+        `;
 
-            const tooltipContent = `
-                <strong>${resource.name}</strong><br>
-                Current: ${resource.count}<br>
-                Limit: ${resource.limit}<br>
-                Generation Rate: ${resource.rate}/s
-                ${key === 'protein' ? `<br>Ribosome Production: +${resources.ribosome.count * resources.ribosome.productionRate}/s` : ''}
-            `;
+        const tooltipContent = `
+            <strong>${resource.name}</strong><br>
+            Current: ${resource.count}<br>
+            Limit: ${resource.limit}<br>
+            Generation Rate: ${resource.rate}/s
+        `;
 
-            div.onmouseover = (e) => showTooltip(e, tooltipContent);
-            div.onmouseout = hideTooltip;
-            div.onmousemove = (e) => {
-                tooltip.style.left = e.pageX + 10 + "px";
-                tooltip.style.top = e.pageY + 10 + "px";
-            };
+        div.onmouseover = (e) => showTooltip(e, tooltipContent);
+        div.onmouseout = hideTooltip;
+        div.onmousemove = (e) => {
+            tooltip.style.left = e.pageX + 10 + "px";
+            tooltip.style.top = e.pageY + 10 + "px";
+        };
 
-            resourceBar.appendChild(div);
+        // Ribosome 관련 자원은 아래 섹션으로 분류
+        if (key === 'ribosome' || resource.name.includes("Ribosome")) {
+            resourcesBottom.appendChild(div);
+        } else {
+            resourcesTop.appendChild(div);
         }
     }
 }

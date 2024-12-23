@@ -16,13 +16,34 @@ header {
     padding: 10px;
     text-align: center;
 }
+/* 기존 #resourcebar 스타일 유지 */
 #resourcebar {
     grid-row: 2 / -1;
     background-color: white;
     border-right: 2px solid #ddd;
     padding: 10px;
-    overflow-y: auto;
+    overflow-y: hidden; /* 전체 스크롤 비활성화 */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
+
+/* 새 섹션 스타일 추가 */
+#resources-top,
+#resources-bottom {
+    flex: 1;
+    overflow-y: auto; /* 개별 섹션 스크롤 활성화 */
+    padding: 10px;
+    border: 1px solid #ddd; /* 시각적 구분을 위한 테두리 */
+    background-color: #f9f9f9; /* 각 섹션 구분을 위한 색상 */
+    border-radius: 5px;
+}
+
+/* 섹션 간 간격을 추가 */
+#resources-bottom {
+    background-color: #eef2f7; /* Ribosome 관련 섹션의 다른 색상 */
+}
+
 main {
     padding: 20px;
     overflow-y: auto;

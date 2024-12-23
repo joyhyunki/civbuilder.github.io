@@ -9,8 +9,8 @@ export const ages = ["Prehistoric", "Ancient", "Medieval", "Industrial", "Modern
 // Resource definitions
 export const resources = {
     aminoAcid: { name: "Amino Acid", count: 0, limit: 100, rate: 0, icon: "Images/aminoacid.png", age: 0, visible: true },
-    protein: { name: "Protein", count: 0, limit: 100, rate: 0, icon: "Images/protein.png", age: 0, visible: false },
-    ribosome: { name: "Ribosome", count: 0, productionRate: 1, age: 0, visible: false },
+    protein: { name: "Protein", count: 0, limit: 100, rate: 0, icon: "Images/protein.png", age: 0, visible: true },
+    ribosome: { name: "Ribosome", count: 0, limit: 99, rate: 0, productionRate: 1, icon: "Images/ribosome.png", age: 0, visible: false },
     dna: { name: "DNA", count: 0, limit: 25, rate: 0, icon: "Images/dna.png", age: 0, visible: false },
     monad: {name: "Monad", count: 0, limit: 100, rate: 0, icon:"Images/monad.png", age: 1, visible: false },
 };
