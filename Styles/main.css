@@ -8,6 +8,8 @@ body {
     grid-template-columns: 300px 1fr 300px;
     grid-template-rows: auto 1fr auto;
     background-color: #f0f8ff;
+    user-select: none;
+    cursor: default;
 }
 header {
     grid-column: 1 / -1;
@@ -15,6 +17,8 @@ header {
     color: white;
     padding: 10px;
     text-align: center;
+    user-select: none;
+    cursor: default;
 }
 /* 기존 #resourcebar 스타일 유지 */
 #resourcebar {
@@ -55,16 +59,20 @@ main {
     border-left: 2px solid #ddd;
     padding: 10px;
     overflow-y: auto;
+    user-select: none;
+    cursor: default;
 }
 .resource {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    user-select: none;
 }
 .resource img {
     width: 30px;
     height: 30px;
     margin-right: 10px;
+    user-select: none;
 }
 button {
     background-color: #4CAF50;
@@ -78,11 +86,43 @@ button {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 4px;
+    user-select: none;
 }
 button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
+    user-select: none;
 }
+
+/* Section title 공통 스타일 */
+.section-title {
+    font-size: 18px; /* 글씨 크기 */
+    font-weight: bold;
+    position: relative; /* 위치를 독립적으로 조정할 수 있도록 설정 */
+    top: -5px; /* 위로 이동 (음수 값) */
+    text-align: center; /* 가운데 정렬 */
+    margin: 0; /* 여백 제거 */
+    margin-bottom: 8px; /* 아래 여백 */
+    color: #333; /* 텍스트 색상 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    border-bottom: 1px solid #ddd; /* 구분선 */
+    padding-bottom: 3px; /* 텍스트와 구분선 간격 */
+    cursor: default;
+    user-select: none;
+}
+
+/* Top Resources 콘텐츠 스타일 */
+#resources-top {
+    margin-bottom: 10px; /* 아래쪽 여백 */
+    padding: 10px;
+}
+
+/* Bottom Resources 콘텐츠 스타일 */
+#resources-bottom {
+    padding: 10px;
+}
+
+
 
 /* New Tooltip Styles */
 .tooltip {
@@ -99,6 +139,7 @@ button:disabled {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
     line-height: 1.5;
     border: 1px solid #444;
+    cursor: pointer;
 }
 
 .tooltip strong {
@@ -106,6 +147,7 @@ button:disabled {
     display: block;
     margin-bottom: 5px;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .resource:hover, 
@@ -113,6 +155,7 @@ button:not(:disabled):hover {
     opacity: 0.9;
     transform: translateY(-1px);
     transition: all 0.2s ease;
+    cursor: pointer;    
 }
 
 /* Tooltip content styling */

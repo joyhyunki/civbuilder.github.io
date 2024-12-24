@@ -24,13 +24,14 @@ function hideTooltip() {
 
 // UI Update functions
 function updateResources() {
-    const resourcesTop = document.getElementById("resources-top");
-    const resourcesBottom = document.getElementById("resources-bottom");
-    resourcesTop.innerHTML = "";
-    resourcesBottom.innerHTML = "";
+    const resourcesTopContent = document.getElementById("resources-top-content");
+    const resourcesBottomContent = document.getElementById("resources-bottom-content");
+
+    resourcesTopContent.innerHTML = "";
+    resourcesBottomContent.innerHTML = "";
 
     for (const [key, resource] of Object.entries(resources)) {
-        if (!resource.visible || currentAge !== resource.age) continue;
+        if (!resource.visible || resource.age !== currentAge) continue;
 
         const div = document.createElement("div");
         div.className = "resource";
@@ -44,6 +45,7 @@ function updateResources() {
             Current: ${resource.count}<br>
             Limit: ${resource.limit}<br>
             Generation Rate: ${resource.rate}/s
+            ${key === 'protein' ? `<br>Ribosome Production: +${resources.ribosome.count * resources.ribosome.productionRate}/s` : ''}
         `;
 
         div.onmouseover = (e) => showTooltip(e, tooltipContent);
@@ -53,14 +55,14 @@ function updateResources() {
             tooltip.style.top = e.pageY + 10 + "px";
         };
 
-        // Ribosome 관련 자원은 아래 섹션으로 분류
-        if (key === 'ribosome' || resource.name.includes("Ribosome")) {
-            resourcesBottom.appendChild(div);
+        if (key === 'ribosome' || resource.type === 'building') {
+            resourcesBottomContent.appendChild(div);
         } else {
-            resourcesTop.appendChild(div);
+            resourcesTopContent.appendChild(div);
         }
     }
 }
+
 
 function updateButtons() {
     const buttonsDiv = document.getElementById("buttons");
